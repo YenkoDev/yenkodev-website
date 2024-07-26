@@ -41,7 +41,7 @@ const animations: {
       },
     },
   }),
-  zoomIn: (delay = 0, duration = 1) => ({
+  zoomIn: (_direction = "", delay = 0, duration = 1) => ({
     hidden: {
       scale: 0,
       opacity: 0,

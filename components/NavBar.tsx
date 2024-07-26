@@ -121,7 +121,10 @@ const NavBar = () => {
                   delay={(index + 1) / 10 + 0.1}
                   duration={1}
                 >
-                  <li className="cursor-pointer list-none font-semimedium">
+                  <li
+                    className="cursor-pointer list-none font-semimedium"
+                    onClick={() => setIsOpen(false)}
+                  >
                     <a href={navLink.href}>{navLink.title}</a>
                   </li>
                 </AnimatedWrapper>
