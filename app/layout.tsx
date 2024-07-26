@@ -6,7 +6,7 @@ import { ThemeProvider } from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Yenko Dev",
+  title: "YenkoDev",
   description:
     "YenkoDev offers cutting-edge software solutions tailored to meet the diverse needs of our clients. Specializing in mobile, desktop, web app development, AI/ML, cloud services, and more.",
 };

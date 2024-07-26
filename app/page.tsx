@@ -30,16 +30,17 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="relative bg-white-100 dark:bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-1 px-5">
-        <div className="max-w-7xl w-full bg-white-100 dark:bg-black-100 ">
-          <header>
-            <NavBar />
-          </header>
+      <header className="relative z-20">
+        <NavBar />
+      </header>
 
-          <main>
-            <section id="hero">
-              <Hero />
-            </section>
+      <main>
+        <section id="hero">
+          <Hero />
+        </section>
+
+        <div className="relative dark:bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-1 px-5">
+          <div className="max-w-7xl w-full dark:bg-black-100 ">
             <section id="services">
               <Services />
             </section>
@@ -55,19 +56,16 @@ const Home = () => {
             <section id="team">
               <Team />
             </section>
-            <section id="tech-used">
-              <TechUsed />
-            </section>
             <section id="contact">
               <Contact />
             </section>
-          </main>
-
-          <footer>
-            <Footer />
-          </footer>
+          </div>
         </div>
-      </div>
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
