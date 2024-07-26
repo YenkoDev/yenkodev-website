@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export const TypewriterEffectSmooth = ({
   words,
@@ -46,16 +46,18 @@ export const TypewriterEffectSmooth = ({
     );
   };
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <div className={cn("inline-flex items-center", className)}>
       <motion.div
+        ref={ref}
         className="overflow-hidden"
         initial={{
           width: "0%",
         }}
-        whileInView={{
-          width: "fit-content",
-        }}
+        animate={isInView ? { width: "fit-content" } : { width: "0%" }}
         transition={{
           duration: 2,
           ease: "linear",

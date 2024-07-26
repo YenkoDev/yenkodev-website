@@ -38,7 +38,7 @@ const Hero = () => {
         </AnimatedWrapper>
       </div>
 
-      <div className="relative h-hero-height px-4">
+      <div className="relative h-hero-height hero-padding">
         <div className="relative z-10 max-w-5xl m-auto lg:mt-32 md:24 mt-16">
           <AnimatedWrapper
             animation="slideIn"
@@ -51,22 +51,20 @@ const Hero = () => {
             </div>
           </AnimatedWrapper>
 
-          <h1 className="md:block hidden lg:text-5xl md:text-4xl text-3xl font-bold mb-4 text-center tracking-wide">
+          <h1 className="md:block hidden hero-heading">
             <TypewriterEffectSmooth words={heroHeadline} />
           </h1>
 
-          <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
-            <h1 className="md:hidden block lg:text-5xl md:text-4xl text-3xl font-bold mb-4 text-center tracking-wide">
-              Comprehensive <span className="text-orange-400">Software</span>
-              <span className="text-orange-400">
-                {" "}
-                <span className="text-blue-400">Solutions</span>
-              </span>
-            </h1>
-          </AnimatedWrapper>
+          <h1 className="md:hidden block hero-heading">
+            Comprehensive <span className="text-orange-400">Software</span>
+            <span className="text-orange-400">
+              {" "}
+              <span className="text-blue-400">Solutions</span>
+            </span>
+          </h1>
 
           <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
-            <p className="md:text-lg text-sm max-w-2xl m-auto text-center text-gray-500 mb-16">
+            <p className="hero-subheading md:max-w-4xl max-w-sm mb-16">
               YenkoDev offers cutting-edge software solutions tailored to meet
               the diverse needs of our clients. Specializing in web, mobile,
               desktop app development, AI/ML, and custom software solutions.

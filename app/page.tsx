@@ -8,7 +8,6 @@ import {
   Projects,
   Testimonials,
   Team,
-  TechUsed,
   Contact,
   Footer,
 } from "../components";
@@ -39,8 +38,8 @@ const Home = () => {
           <Hero />
         </section>
 
-        <div className="relative dark:bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-1 px-5">
-          <div className="max-w-7xl w-full dark:bg-black-100 ">
+        <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
+          <div className="max-w-7xl w-full">
             <section id="services">
               <Services />
             </section>

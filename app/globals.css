@@ -11,3 +11,18 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
+
+@layer components {
+  .hero-heading {
+    @apply lg:text-5xl md:text-4xl text-3xl font-bold mb-4 text-center tracking-wide;
+  }
+  .hero-subheading {
+    @apply md:text-lg text-sm max-w-2xl m-auto text-center text-gray-500 mb-16;
+  }
+  .hero-padding {
+    @apply py-8 px-4;
+  }
+  .section-padding {
+    @apply py-8 px-4 min-h-[500px];
+  }
+}

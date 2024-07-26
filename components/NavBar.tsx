@@ -12,7 +12,7 @@ const WorkWithUsButton = () => {
   return (
     <a
       href="#contact"
-      className="bg-gray-800 text-white hover:bg-gray-900 px-4 py-2 rounded-2xl"
+      className="bg-blue-400 text-white hover:bg-blue-600 px-4 py-2 rounded-full"
     >
       Work With Us
     </a>
@@ -39,7 +39,7 @@ const NavBar = () => {
 
   return (
     <nav className="w-full">
-      <div className="flex justify-between items-center max-w-7xl m-auto py-8 px-4">
+      <div className="flex justify-between items-center max-w-7xl m-auto hero-padding">
         <AnimatedWrapper
           animation="slideIn"
           direction="up"
@@ -95,9 +95,9 @@ const NavBar = () => {
           >
             <button onClick={toggleMenu}>
               {isOpen ? (
-                <FaTimes size={24} className="text-gray-900" />
+                <FaTimes size={24} className="text-gray-900 mr-2" />
               ) : (
-                <FaBars size={24} className="text-gray-900" />
+                <FaBars size={24} className="text-gray-900 mr-2" />
               )}
             </button>
           </AnimatedWrapper>
