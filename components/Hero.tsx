@@ -55,13 +55,15 @@ const Hero = () => {
             <TypewriterEffectSmooth words={heroHeadline} />
           </h1>
 
-          <h1 className="md:hidden block hero-heading">
-            Comprehensive <span className="text-orange-400">Software</span>
-            <span className="text-orange-400">
-              {" "}
-              <span className="text-blue-400">Solutions</span>
-            </span>
-          </h1>
+          <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
+            <h1 className="md:hidden block hero-heading">
+              Comprehensive <span className="text-orange-400">Software</span>
+              <span className="text-orange-400">
+                {" "}
+                <span className="text-blue-400">Solutions</span>
+              </span>
+            </h1>
+          </AnimatedWrapper>
 
           <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
             <p className="hero-subheading md:max-w-4xl max-w-sm mb-16">
