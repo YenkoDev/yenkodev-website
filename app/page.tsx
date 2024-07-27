@@ -1,16 +1,6 @@
 import React from "react";
 import Head from "next/head";
 
-import {
-  NavBar,
-  Services,
-  Process,
-  Projects,
-  Testimonials,
-  Team,
-  Contact,
-  Footer,
-} from "../components";
 import Hero from "@/components/Hero";
 
 const Home = () => {
@@ -29,42 +19,15 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <header className="relative z-20">
-        <NavBar />
-      </header>
-
       <main>
-        <section id="hero">
+        <section>
           <Hero />
         </section>
 
         <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
-          <div className="max-w-7xl w-full">
-            <section id="services">
-              <Services />
-            </section>
-            <section id="process">
-              <Process />
-            </section>
-            <section id="projects">
-              <Projects />
-            </section>
-            <section id="testimonials">
-              <Testimonials />
-            </section>
-            <section id="team">
-              <Team />
-            </section>
-            <section id="contact">
-              <Contact />
-            </section>
-          </div>
+          <div className="max-w-7xl w-full"></div>
         </div>
       </main>
-
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 };

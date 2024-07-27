@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AnimatedWrapper } from "./ui/AnimatedWrapper";
 
@@ -47,7 +48,7 @@ const NavBar = () => {
           duration={1}
         >
           <div className="flex items-center justify-center lg:justify-start">
-            <a href="/" className="cursor-pointer">
+            <Link href="/" className="cursor-pointer">
               <Image
                 src={yenkoDevWhiteLogo}
                 alt="yenkodev logo"
@@ -55,7 +56,7 @@ const NavBar = () => {
                 objectFit="contain"
                 className="mb-4"
               />
-            </a>
+            </Link>
           </div>
         </AnimatedWrapper>
 
@@ -69,7 +70,7 @@ const NavBar = () => {
               duration={1}
             >
               <li className="cursor-pointer list-none font-semimedium">
-                <a href={navLink.href}>{navLink.title}</a>
+                <Link href={navLink.href}>{navLink.title}</Link>
               </li>
             </AnimatedWrapper>
           ))}
@@ -125,7 +126,7 @@ const NavBar = () => {
                     className="cursor-pointer list-none font-semimedium"
                     onClick={() => setIsOpen(false)}
                   >
-                    <a href={navLink.href}>{navLink.title}</a>
+                    <Link href={navLink.href}>{navLink.title}</Link>
                   </li>
                 </AnimatedWrapper>
               ))}

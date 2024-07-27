@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
-
+import NavBar from "@/components/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -25,6 +25,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <header className="relative z-20">
+            <NavBar />
+          </header>
           {children}
         </ThemeProvider>
       </body>
