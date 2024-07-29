@@ -13,7 +13,7 @@ const Process = () => {
           name="description"
           content="Discover the YenkoDev process for delivering cutting-edge software solutions. We specialize in web, mobile, desktop app development, AI/ML, and custom software solutions, following a structured approach to ensure quality and efficiency."
         />
-        <meta property="og:title" content="Our Process - YenkoDev" />
+        <meta property="og:title" content="Process - YenkoDev" />
         <meta
           property="og:description"
           content="Discover the YenkoDev process for delivering cutting-edge software solutions. We specialize in web, mobile, desktop app development, AI/ML, and custom software solutions, following a structured approach to ensure quality and efficiency."
