@@ -4,21 +4,21 @@ import React from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
 
-const Team = () => {
+const ContactUs = () => {
   return (
     <>
       <Head>
-        <title>Our Team - YenkoDev</title>
+        <title>Contact Us - YenkoDev</title>
         <meta
           name="description"
-          content="Meet the talented team behind YenkoDev, committed to delivering exceptional software solutions."
+          content="Contact YenkoDev for more information or inquiries about our software solutions. Specializing in web, mobile, desktop app development, AI/ML, and custom software solutions."
         />
-        <meta property="og:title" content="Our Team - YenkoDev" />
+        <meta property="og:title" content="Contact Us - YenkoDev" />
         <meta
           property="og:description"
-          content="Meet the talented team behind YenkoDev, committed to delivering exceptional software solutions."
+          content="Contact YenkoDev for more information or inquiries about our software solutions. Specializing in web, mobile, desktop app development, AI/ML, and custom software solutions."
         />
-        <meta property="og:url" content="https://www.yenkodev.com/team" />
+        <meta property="og:url" content="https://www.yenkodev.com/contact" />
       </Head>
       <main className="p-4 max-w-7xl mx-auto overflow-hidden">
         <motion.div
@@ -30,7 +30,7 @@ const Team = () => {
         >
           <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
             <div className="max-w-7xl w-full">
-              <h1 className="py-8 text-3xl font-bold">Our Team</h1>
+              <h1 className="py-8 text-3xl font-bold">Contact Us</h1>
             </div>
           </div>
         </motion.div>
@@ -39,4 +39,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default ContactUs;

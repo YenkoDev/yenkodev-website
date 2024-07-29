@@ -5,23 +5,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { AnimatedWrapper } from "./ui/AnimatedWrapper";
+import { useNavigation } from "@/context/NavigationContext";
 
 import { yenkoDevWhiteLogo } from "@/assets";
 import { navLinks } from "@/constants";
 
-const WorkWithUsButton = () => {
+const WorkWithUsButton = ({
+  handleLinkClick,
+}: {
+  handleLinkClick: (
+    e:
+      | React.MouseEvent<HTMLImageElement, MouseEvent>
+      | React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    path: string
+  ) => void;
+}) => {
   return (
-    <a
-      href="#contact"
+    <Link
+      href="/contact"
+      onClick={(e) => handleLinkClick(e, "/contact")}
       className="bg-blue-400 text-white hover:bg-blue-600 px-4 py-2 rounded-full"
     >
       Work With Us
-    </a>
+    </Link>
   );
 };
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { handleNavigation } = useNavigation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -37,6 +49,16 @@ const NavBar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleLinkClick = (
+    e:
+      | React.MouseEvent<HTMLImageElement, MouseEvent>
+      | React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    path: string
+  ) => {
+    e.preventDefault();
+    handleNavigation(path);
+  };
 
   return (
     <nav className="w-full">
@@ -55,6 +77,7 @@ const NavBar = () => {
                 height={45}
                 objectFit="contain"
                 className="mb-4"
+                onClick={(e) => handleLinkClick(e, "/")}
               />
             </Link>
           </div>
@@ -70,7 +93,12 @@ const NavBar = () => {
               duration={1}
             >
               <li className="cursor-pointer list-none font-semimedium">
-                <Link href={navLink.href}>{navLink.title}</Link>
+                <Link
+                  href={navLink.href}
+                  onClick={(e) => handleLinkClick(e, navLink.href)}
+                >
+                  {navLink.title}
+                </Link>
               </li>
             </AnimatedWrapper>
           ))}
@@ -83,7 +111,7 @@ const NavBar = () => {
             delay={0.7}
             duration={1}
           >
-            <WorkWithUsButton />
+            <WorkWithUsButton handleLinkClick={handleLinkClick} />
           </AnimatedWrapper>
         </div>
 
@@ -126,7 +154,12 @@ const NavBar = () => {
                     className="cursor-pointer list-none font-semimedium"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Link href={navLink.href}>{navLink.title}</Link>
+                    <Link
+                      href={navLink.href}
+                      onClick={(e) => handleLinkClick(e, navLink.href)}
+                    >
+                      {navLink.title}
+                    </Link>
                   </li>
                 </AnimatedWrapper>
               ))}
@@ -139,7 +172,7 @@ const NavBar = () => {
                 delay={0.7}
                 duration={1}
               >
-                <WorkWithUsButton />
+                <WorkWithUsButton handleLinkClick={handleLinkClick} />
               </AnimatedWrapper>
             </div>
           </div>

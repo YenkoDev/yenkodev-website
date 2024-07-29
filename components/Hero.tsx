@@ -2,10 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useNavigation } from "@/context/NavigationContext";
 
 import { HoverBorderGradient } from "./ui/HoverBorderGradient";
 import { AnimatedWrapper } from "./ui/AnimatedWrapper";
 import { TypewriterEffectSmooth } from "./ui/TypewriterEffect";
+import { motion } from "framer-motion";
 
 import { yenkoYLogoNoBg, heroCover } from "@/assets";
 
@@ -24,9 +27,27 @@ const heroHeadline = [
 ];
 
 const Hero = () => {
+  const { handleNavigation } = useNavigation();
+
+  const handleLinkClick = (
+    e:
+      | React.MouseEvent<HTMLImageElement, MouseEvent>
+      | React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    path: string
+  ) => {
+    e.preventDefault();
+    handleNavigation(path);
+  };
+
   return (
-    <>
-      <div className="absolute md:inset-0 bottom-5 z-0">
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.5 }}
+      className="p-4 container mx-auto overflow-hidden"
+    >
+      <div className="absolute md:inset-0 bottom-5 z-0 overflow-hidden">
         <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
           <Image
             src={heroCover}
@@ -38,8 +59,8 @@ const Hero = () => {
         </AnimatedWrapper>
       </div>
 
-      <div className="relative h-hero-height hero-padding">
-        <div className="relative z-10 max-w-5xl m-auto lg:mt-32 md:24 mt-16">
+      <div className="relative hero-padding overflow-hidden">
+        <div className="relative z-10 max-w-5xl m-auto lg:mt-32 md:24 sm:mt-16 mt-8">
           <AnimatedWrapper
             animation="slideIn"
             direction="up"
@@ -81,15 +102,21 @@ const Hero = () => {
           >
             <div className="flex items-center justify-center">
               <HoverBorderGradient>
-                <a href="#services" className="font-bold">
-                  View Our Services
-                </a>
+                <Link
+                  href="/services"
+                  onClick={(e) => {
+                    handleLinkClick(e, "/services");
+                  }}
+                  className="font-bold "
+                >
+                  Our Services
+                </Link>
               </HoverBorderGradient>
             </div>
           </AnimatedWrapper>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 };
 

@@ -26,6 +26,16 @@ const animations: {
         duration: duration,
       },
     },
+    exit: {
+      x: direction === "left" ? "100%" : direction === "right" ? "-100%" : 0,
+      y: direction === "up" ? "100%" : direction === "down" ? "-100%" : 0,
+      opacity: 0,
+      transition: {
+        type: "spring",
+        delay: 0,
+        duration: duration,
+      },
+    },
   }),
   fadeIn: (direction = "up", delay = 0, duration = 1) => ({
     hidden: {
@@ -38,6 +48,15 @@ const animations: {
         delay: delay,
         duration: duration,
         ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        type: "tween",
+        delay: 0,
+        duration: duration,
+        ease: "easeIn",
       },
     },
   }),
@@ -54,6 +73,16 @@ const animations: {
         delay: delay,
         duration: duration,
         ease: "easeOut",
+      },
+    },
+    exit: {
+      scale: 0,
+      opacity: 0,
+      transition: {
+        type: "spring",
+        delay: 0,
+        duration: duration,
+        ease: "easeIn",
       },
     },
   }),
@@ -78,7 +107,7 @@ export const AnimatedWrapper: React.FC<AnimatedWrapperProps> = ({
 }) => {
   const variants = animations[animation](direction, delay, duration);
   return (
-    <motion.div initial="hidden" animate="show" variants={variants}>
+    <motion.div initial="hidden" animate="show" exit="exit" variants={variants}>
       {children}
     </motion.div>
   );
