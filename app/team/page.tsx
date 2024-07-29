@@ -8,12 +8,12 @@ const Team = () => {
   return (
     <>
       <Head>
-        <title>Our Team - YenkoDev</title>
+        <title>Team - YenkoDev</title>
         <meta
           name="description"
           content="Meet the talented team behind YenkoDev, committed to delivering exceptional software solutions."
         />
-        <meta property="og:title" content="Our Team - YenkoDev" />
+        <meta property="og:title" content="Team - YenkoDev" />
         <meta
           property="og:description"
           content="Meet the talented team behind YenkoDev, committed to delivering exceptional software solutions."
@@ -30,7 +30,7 @@ const Team = () => {
         >
           <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
             <div className="max-w-7xl w-full">
-              <h1 className="py-8 text-3xl font-bold">Our Team</h1>
+              <h1 className="py-8 text-3xl font-bold">Team</h1>
             </div>
           </div>
         </motion.div>
