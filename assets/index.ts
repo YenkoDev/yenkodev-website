@@ -1,4 +1,4 @@
-import yenkoDevWhiteLogo from "./images/yenkoDevLogoWhite.png";
+import yenkoDevWhiteLogo from "./images/yenkoDevLogoNoBg.png";
 import yenkoYLogoNoBg from "./images/yenkoYLogoNoBg.png";
 import heroCover from "./images/heroCover.jpg";
 

@@ -15,7 +15,7 @@ const Content = () => {
       >
         <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
           <div className="max-w-7xl w-full">
-            <h1 className="text-3xl font-bold">Projects</h1>
+            <h1 className="text-3xl font-bold">Testimonials</h1>
           </div>
         </div>
       </motion.div>

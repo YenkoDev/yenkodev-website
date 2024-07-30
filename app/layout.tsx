@@ -2,13 +2,13 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
+
 import { ThemeProvider } from "./provider";
-import { useState, useEffect, useRef } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import NavBar from "@/components/NavBar";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { NavigationProvider, useNavigation } from "@/context/NavigationContext";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,20 +50,36 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+      </head>
       <body className={inter.className}>
         <div suppressHydrationWarning>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
+          {mounted ? (
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <NavigationProvider>
+                <MainLayout>{children}</MainLayout>
+              </NavigationProvider>
+            </ThemeProvider>
+          ) : (
             <NavigationProvider>
               <MainLayout>{children}</MainLayout>
             </NavigationProvider>
-          </ThemeProvider>
+          )}
         </div>
       </body>
     </html>

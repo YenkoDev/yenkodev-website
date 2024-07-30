@@ -75,7 +75,7 @@ const NavBar = () => {
                 src={yenkoDevWhiteLogo}
                 alt="yenkodev logo"
                 height={45}
-                objectFit="contain"
+                style={{ objectFit: "contain" }}
                 className="mb-4"
                 onClick={(e) => handleLinkClick(e, "/")}
               />

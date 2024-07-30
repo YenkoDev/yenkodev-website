@@ -52,9 +52,10 @@ const Hero = () => {
           <Image
             src={heroCover}
             alt="background image"
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
             quality={100}
             className="opacity-[5%]"
+            priority
           />
         </AnimatedWrapper>
       </div>
@@ -68,7 +69,12 @@ const Hero = () => {
             duration={1}
           >
             <div className="flex justify-center items-center w-full mb-8">
-              <Image src={yenkoYLogoNoBg} alt="hero image" height={45} />
+              <Image
+                src={yenkoYLogoNoBg}
+                alt="hero image"
+                height={45}
+                priority
+              />
             </div>
           </AnimatedWrapper>
 
@@ -109,7 +115,7 @@ const Hero = () => {
                   }}
                   className="font-bold "
                 >
-                  Our Services
+                  View Our Services
                 </Link>
               </HoverBorderGradient>
             </div>
