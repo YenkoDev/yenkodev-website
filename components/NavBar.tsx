@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { AnimatedWrapper } from "./ui/AnimatedWrapper";
 import { useNavigation } from "@/context/NavigationContext";
+import { motion } from "framer-motion";
 
 import { yenkoDevWhiteLogo } from "@/assets";
 import { navLinks } from "@/constants";
@@ -33,7 +33,7 @@ const WorkWithUsButton = ({
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { handleNavigation } = useNavigation();
+  const { isLoading, handleNavigation } = useNavigation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -63,14 +63,18 @@ const NavBar = () => {
   return (
     <nav className="w-full">
       <div className="flex justify-between items-center max-w-7xl m-auto hero-padding">
-        <AnimatedWrapper
-          animation="slideIn"
-          direction="up"
-          delay={0.1}
-          duration={1}
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ delay: 0.1, duration: 1, type: "spring" }}
         >
           <div className="flex items-center justify-center lg:justify-start">
-            <Link href="/" className="cursor-pointer">
+            <Link
+              href="/"
+              onClick={(e) => handleLinkClick(e, "/")}
+              className="cursor-pointer"
+            >
               <Image
                 src={yenkoDevWhiteLogo}
                 alt="yenkodev logo"
@@ -78,58 +82,61 @@ const NavBar = () => {
                 style={{ objectFit: "contain" }}
                 className="mb-4"
                 onClick={(e) => handleLinkClick(e, "/")}
+                priority
               />
             </Link>
           </div>
-        </AnimatedWrapper>
+        </motion.div>
 
         <div className="hidden lg:flex gap-8 text-gray-500 tracking-tight">
           {navLinks.map((navLink, index) => (
-            <AnimatedWrapper
+            <motion.li
               key={index}
-              animation="slideIn"
-              direction="up"
-              delay={(index + 1) / 10 + 0.1}
-              duration={1}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{
+                delay: (index + 1) / 10 + 0.1,
+                duration: 1,
+                type: "spring",
+              }}
+              className="cursor-pointer list-none font-semimedium"
             >
-              <li className="cursor-pointer list-none font-semimedium">
-                <Link
-                  href={navLink.href}
-                  onClick={(e) => handleLinkClick(e, navLink.href)}
-                >
-                  {navLink.title}
-                </Link>
-              </li>
-            </AnimatedWrapper>
+              <Link
+                href={navLink.href}
+                onClick={(e) => handleLinkClick(e, navLink.href)}
+              >
+                {navLink.title}
+              </Link>
+            </motion.li>
           ))}
         </div>
 
         <div className="hidden lg:block">
-          <AnimatedWrapper
-            animation="slideIn"
-            direction="up"
-            delay={0.7}
-            duration={1}
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ delay: 0.7, duration: 1, type: "spring" }}
           >
             <WorkWithUsButton handleLinkClick={handleLinkClick} />
-          </AnimatedWrapper>
+          </motion.div>
         </div>
 
         <div className="lg:hidden">
-          <AnimatedWrapper
-            animation="slideIn"
-            direction="right"
-            delay={0.1}
-            duration={1}
+          <motion.button
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -100, opacity: 0 }}
+            transition={{ delay: 0.1, duration: 1, type: "spring" }}
+            onClick={toggleMenu}
           >
-            <button onClick={toggleMenu}>
-              {isOpen ? (
-                <FaTimes size={24} className="text-gray-900 mr-2" />
-              ) : (
-                <FaBars size={24} className="text-gray-900 mr-2" />
-              )}
-            </button>
-          </AnimatedWrapper>
+            {isOpen ? (
+              <FaTimes size={24} className="text-gray-900 mr-2" />
+            ) : (
+              <FaBars size={24} className="text-gray-900 mr-2" />
+            )}
+          </motion.button>
         </div>
 
         {/* Mobile menu */}
@@ -143,37 +150,38 @@ const NavBar = () => {
             </button>
             <ul className="flex flex-col items-center gap-8 text-gray-500 text-2xl tracking-tight">
               {navLinks.map((navLink, index) => (
-                <AnimatedWrapper
+                <motion.li
                   key={index}
-                  animation="slideIn"
-                  direction="up"
-                  delay={(index + 1) / 10 + 0.1}
-                  duration={1}
+                  initial={{ y: -100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 100, opacity: 0 }}
+                  transition={{
+                    delay: (index + 1) / 10 + 0.1,
+                    duration: 1,
+                    type: "spring",
+                  }}
+                  className="cursor-pointer list-none font-semimedium"
+                  onClick={() => setIsOpen(false)}
                 >
-                  <li
-                    className="cursor-pointer list-none font-semimedium"
-                    onClick={() => setIsOpen(false)}
+                  <Link
+                    href={navLink.href}
+                    onClick={(e) => handleLinkClick(e, navLink.href)}
                   >
-                    <Link
-                      href={navLink.href}
-                      onClick={(e) => handleLinkClick(e, navLink.href)}
-                    >
-                      {navLink.title}
-                    </Link>
-                  </li>
-                </AnimatedWrapper>
+                    {navLink.title}
+                  </Link>
+                </motion.li>
               ))}
             </ul>
 
             <div className="mt-16" onClick={toggleMenu}>
-              <AnimatedWrapper
-                animation="slideIn"
-                direction="up"
-                delay={0.7}
-                duration={1}
+              <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 100, opacity: 0 }}
+                transition={{ delay: 0.7, duration: 1, type: "spring" }}
               >
                 <WorkWithUsButton handleLinkClick={handleLinkClick} />
-              </AnimatedWrapper>
+              </motion.div>
             </div>
           </div>
         )}

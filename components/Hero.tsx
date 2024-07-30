@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useNavigation } from "@/context/NavigationContext";
 
 import { HoverBorderGradient } from "./ui/HoverBorderGradient";
-import { AnimatedWrapper } from "./ui/AnimatedWrapper";
 import { TypewriterEffectSmooth } from "./ui/TypewriterEffect";
 import { motion } from "framer-motion";
 
@@ -48,7 +47,12 @@ const Hero = () => {
       className="p-4 container mx-auto overflow-hidden"
     >
       <div className="absolute md:inset-0 bottom-5 z-0 overflow-hidden">
-        <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ delay: 0.9, duration: 1 }}
+        >
           <Image
             src={heroCover}
             alt="background image"
@@ -57,16 +61,16 @@ const Hero = () => {
             className="opacity-[5%]"
             priority
           />
-        </AnimatedWrapper>
+        </motion.div>
       </div>
 
       <div className="relative hero-padding overflow-hidden">
         <div className="relative z-10 max-w-5xl m-auto lg:mt-32 md:24 sm:mt-16 mt-8">
-          <AnimatedWrapper
-            animation="slideIn"
-            direction="up"
-            delay={0.8}
-            duration={1}
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ delay: 0.8, duration: 1, type: "spring" }}
           >
             <div className="flex justify-center items-center w-full mb-8">
               <Image
@@ -76,13 +80,18 @@ const Hero = () => {
                 priority
               />
             </div>
-          </AnimatedWrapper>
+          </motion.div>
 
           <h1 className="md:block hidden hero-heading">
             <TypewriterEffectSmooth words={heroHeadline} />
           </h1>
 
-          <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
+          >
             <h1 className="md:hidden block hero-heading">
               Comprehensive <span className="text-orange-400">Software</span>
               <span className="text-orange-400">
@@ -90,21 +99,26 @@ const Hero = () => {
                 <span className="text-blue-400">Solutions</span>
               </span>
             </h1>
-          </AnimatedWrapper>
+          </motion.div>
 
-          <AnimatedWrapper animation="fadeIn" delay={0.9} duration={1}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
+          >
             <p className="hero-subheading md:max-w-4xl max-w-sm mb-16">
               YenkoDev offers cutting-edge software solutions tailored to meet
               the diverse needs of our clients. Specializing in web, mobile,
               desktop app development, AI/ML, and custom software solutions.
             </p>
-          </AnimatedWrapper>
+          </motion.div>
 
-          <AnimatedWrapper
-            animation="slideIn"
-            direction="down"
-            delay={1}
-            duration={1}
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ delay: 1, duration: 1, type: "spring" }}
           >
             <div className="flex items-center justify-center">
               <HoverBorderGradient>
@@ -119,7 +133,7 @@ const Hero = () => {
                 </Link>
               </HoverBorderGradient>
             </div>
-          </AnimatedWrapper>
+          </motion.div>
         </div>
       </div>
     </motion.div>

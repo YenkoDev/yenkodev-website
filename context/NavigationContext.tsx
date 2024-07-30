@@ -26,6 +26,10 @@ export const NavigationProvider = ({ children }: { children: ReactNode }) => {
   const nextPath = useRef<string | null>(null);
 
   const handleNavigation = (path: string | null) => {
+    if (isLoading) {
+      return;
+    }
+
     if (path !== pathname) {
       nextPath.current = path;
       setIsLoading(true);
