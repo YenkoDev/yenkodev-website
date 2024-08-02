@@ -18,28 +18,33 @@ const config = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
+      colors: {
+        "orange-light": colors.orange[400],
+        "orange-dark": colors.orange[500],
+        "blue-light": colors.blue[400],
+        "blue-dark": colors.blue[500],
+        "white-light": "#ffffff",
+        "white-dark": "#e0e0e0",
+        "black-light": "#333333",
+        "black-dark": "#1a1a1a",
+        "custom-gray": colors.gray[500],
+      },
       height: {
         "hero-height": "calc(100vh - 92.688px)",
       },
-      colors: {
-        black: {
-          DEFAULT: "#000",
-          100: "#000319",
-          200: "rgba(17, 25, 40, 0.75)",
-          300: "rgba(255, 255, 255, 0.125)",
-        },
-        white: {
-          DEFAULT: "#FFF",
-          100: "#BEC1DD",
-          200: "#C1C2D3",
+      fontFamily: {
+        poppins: ["Poppins", "serif"],
+      },
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+      },
+      keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
         },
       },
     },

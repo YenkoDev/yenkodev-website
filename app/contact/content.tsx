@@ -5,18 +5,15 @@ import { motion } from "framer-motion";
 
 const Content = () => {
   return (
-    <main className="p-4 max-w-7xl mx-auto overflow-hidden">
+    <main className="section-layout">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.5 }}
-        className="p-4 container mx-auto overflow-hidden"
       >
-        <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
-          <div className="max-w-7xl w-full">
-            <h1 className="text-3xl font-bold">Contact Us</h1>
-          </div>
+        <div className="flex justify-center">
+          <h1 className="text-3xl font-bold w-full">Contact Us</h1>
         </div>
       </motion.div>
     </main>
