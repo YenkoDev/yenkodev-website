@@ -23,9 +23,9 @@ const tabs = [
 ];
 
 const tabContentVariants = {
-  initial: { opacity: 0, y: 10 },
+  initial: { opacity: 0, x: 10 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
+  exit: { opacity: 0, x: -10 },
 };
 
 const tabButtonVariants = {
@@ -164,56 +164,72 @@ const Content = () => {
 
   return (
     <main className="pb-8">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full rounded-bl-xl rounded-br-xl">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2 text-black-light">
-              Services
-            </h1>
-            <p className="text-sm text-custom-gray max-w-4xl">
-              Discover YenkoDev&rsquo;s range of customized software solutions
-              designed to meet your business needs.
-            </p>
-          </div>
+      <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full rounded-bl-xl rounded-br-xl">
+        <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <h1 className="text-3xl font-bold mb-2 text-black-light">Services</h1>
+          <p className="text-sm text-custom-gray max-w-4xl">
+            Discover YenkoDev&rsquo;s range of customized software solutions
+            designed to meet your business needs.
+          </p>
+        </motion.div>
 
-          <BentoGrid className="mx-auto mb-8">
-            {services.map((item, i) => (
+        <BentoGrid className="mx-auto mb-8">
+          {services.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: 10 + i * 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 + i * 0.1 }}
+            >
               <BentoGridItem
-                key={i}
                 title={item.title}
                 description={item.description}
                 header={item.header}
                 icon={item.icon}
               />
-            ))}
-          </BentoGrid>
+            </motion.div>
+          ))}
+        </BentoGrid>
+      </section>
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 100 }}
+        transition={{ duration: 1 }}
+        className="bg-blue-light py-8 max-w-7xl mx-auto rounded-xl"
+      >
+        <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full">
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 1.1 }}
+            className="mb-8"
+          >
+            <h1 className="text-3xl font-bold mb-2 text-white-light">
+              Technologies We Use
+            </h1>
+            <p className="text-sm max-w-4xl text-white-light mb-4">
+              Our tech stack includes the latest frameworks, tools, and
+              platforms to ensure robust, efficient, and innovative results.
+            </p>
+          </motion.div>
+
+          <TabComponent
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            tabContentVariants={tabContentVariants}
+          />
         </section>
-
-        <div className="bg-blue-light py-8 max-w-7xl mx-auto rounded-xl">
-          <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold mb-2 text-white-light">
-                Technologies We Use
-              </h1>
-              <p className="text-sm max-w-4xl text-white-light mb-4">
-                Our tech stack includes the latest frameworks, tools, and
-                platforms to ensure robust, efficient, and innovative results.
-              </p>
-            </div>
-
-            <TabComponent
-              tabs={tabs}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-              tabContentVariants={tabContentVariants}
-            />
-          </section>
-        </div>
       </motion.div>
     </main>
   );

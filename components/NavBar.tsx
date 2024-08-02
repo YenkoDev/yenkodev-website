@@ -35,7 +35,7 @@ const WorkWithUsButton = ({
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoading, handleNavigation } = useNavigation();
+  const { handleNavigation } = useNavigation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

@@ -21,6 +21,20 @@ import fastAPILogo from "./images/fastapi-original.svg";
 import firebaseLogo from "./images/firebase-original.svg";
 import supabaseLogo from "./images/supabase-original.svg";
 
+// Python repeated
+import tensorflowLogo from "./images/tensorflow-original.svg";
+import opencvLogo from "./images/opencv-original.svg";
+
+import cppLogo from "./images/cplusplus-original.svg";
+// Python repeated
+import arduinoLogo from "./images/arduino-original.svg";
+import raspberryPiLogo from "./images/raspberrypi-original.svg";
+import esp32Logo from "./images/esp32-original.png";
+
+import shopifyLogo from "./images/shopify-original.png";
+import bubbleIOLogo from "./images/bubble-io-original.svg";
+import zapierLogo from "./images/zapier-original.svg";
+
 export {
   yenkoDevWhiteLogo,
   yenkoYLogoNoBg,
@@ -42,4 +56,13 @@ export {
   fastAPILogo,
   firebaseLogo,
   supabaseLogo,
+  tensorflowLogo,
+  opencvLogo,
+  cppLogo,
+  arduinoLogo,
+  raspberryPiLogo,
+  esp32Logo,
+  shopifyLogo,
+  bubbleIOLogo,
+  zapierLogo,
 };

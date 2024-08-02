@@ -87,7 +87,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative px-8 py-6 flex flex-col items-center justify-center w-[130px] h-[130px] md:w-[150px] md:h-[170px]  bg-white-light rounded-xl"
+            className="relative px-8 py-6 flex flex-col items-center justify-center w-[130px] h-[130px] md:w-[150px] md:h-[170px] rounded-xl"
             key={item.image}
           >
             <Image
@@ -96,7 +96,7 @@ export const InfiniteMovingCards = ({
               className="mb-4"
               style={{ objectFit: "contain" }}
             />
-            <p className="text-black-light text-center md:text-base text-sm">
+            <p className="text-white-light text-center md:text-base text-sm">
               {item.title}
             </p>
           </li>

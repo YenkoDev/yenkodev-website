@@ -20,6 +20,15 @@ import {
   fastAPILogo,
   firebaseLogo,
   supabaseLogo,
+  tensorflowLogo,
+  opencvLogo,
+  cppLogo,
+  arduinoLogo,
+  raspberryPiLogo,
+  esp32Logo,
+  shopifyLogo,
+  bubbleIOLogo,
+  zapierLogo,
 } from "@/assets";
 
 // Navbar contents.
@@ -98,22 +107,50 @@ export const backendStack = [
 ];
 
 export const aiMlStack = [
-  { title: "Python", image: "" },
-  { title: "TensorFlow", image: "" },
-  { title: "OpenCV", image: "" },
-  { title: "YOLO", image: "" },
-  { title: "Mediapipe", image: "" },
+  { title: "Python", image: pythonLogo },
+  { title: "TensorFlow", image: tensorflowLogo },
+  { title: "OpenCV", image: opencvLogo },
 ];
 
 export const embeddedStack = [
-  { title: "C++", image: "" },
-  { title: "Arduino", image: "" },
-  { title: "Raspberry Pi", image: "" },
-  { title: "ESP32", image: "" },
+  { title: "C++", image: cppLogo },
+  { title: "Python", image: pythonLogo },
+  { title: "Arduino", image: arduinoLogo },
+  { title: "Raspberry Pi", image: raspberryPiLogo },
+  { title: "ESP32", image: esp32Logo },
 ];
 
 export const noCodeStack = [
-  { title: "Shopify", image: "" },
-  { title: "Bubble IO", image: "" },
-  { title: "Zapier", image: "" },
+  { title: "Shopify", image: shopifyLogo },
+  { title: "Bubble IO", image: bubbleIOLogo },
+  { title: "Zapier", image: zapierLogo },
+];
+
+// Process page contents.
+const process = [
+  {
+    title: "Initial Consultation",
+    description:
+      "We start with an initial consultation to understand your business requirements and objectives. During this meeting, we discuss your project ideas, goals, and any specific needs you may have. This helps us gain a clear understanding of your vision and how we can help bring it to life.",
+  },
+  {
+    title: "Planning & Proposal",
+    description:
+      "After understanding your requirements, our team conducts a thorough analysis and creates a detailed project plan. This includes timelines, milestones, and a cost estimate. We then present you with a comprehensive proposal outlining the project scope, deliverables, and development strategy.",
+  },
+  {
+    title: "Design & Development",
+    description:
+      "Once the proposal is approved, our talented designers and developers get to work. We create intuitive and visually appealing designs that align with your brand identity. Our development team then builds robust, scalable, and secure software using the latest technologies and best practices.",
+  },
+  {
+    title: "Testing & Quality Assurance",
+    description:
+      "Quality is a top priority at YenkoDev. We conduct rigorous testing throughout the development process to ensure the software is free of bugs and performs optimally. Our quality assurance team performs various tests, including functional, usability, performance, and security testing, to deliver a flawless product.",
+  },
+  {
+    title: "Deployment & Support",
+    description:
+      "After thorough testing and your final approval, we deploy the software to your desired platform. Our team ensures a smooth and seamless transition. Post-deployment, we provide ongoing support and maintenance to address any issues, perform updates, and ensure the software continues to meet your evolving needs.",
+  },
 ];
