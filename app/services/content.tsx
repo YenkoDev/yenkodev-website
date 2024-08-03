@@ -23,14 +23,19 @@ const tabs = [
 ];
 
 const tabContentVariants = {
-  initial: { opacity: 0, x: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, x: -10 },
+  initial: { opacity: 0, x: 50, scale: 0.95 },
+  animate: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.6 } },
+  exit: { opacity: 0, x: -50, scale: 0.95, transition: { duration: 0.6 } },
 };
 
 const tabButtonVariants = {
-  initial: { backgroundColor: "#3b82f6", color: "#ffffff" },
-  active: { backgroundColor: "#ffffff", color: "#3b82f6" },
+  initial: { backgroundColor: "#3b82f6", color: "#ffffff", scale: 1 },
+  active: {
+    backgroundColor: "#ffffff",
+    color: "#3b82f6",
+    scale: 1.1,
+    transition: { type: "spring", stiffness: 300 },
+  },
 };
 
 function TechstackGroup({
@@ -43,7 +48,7 @@ function TechstackGroup({
   speed: string;
 }) {
   return (
-    <div className="bg-blue-light rounded-md flex flex-col antialiased  dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+    <div className="bg-blue-light rounded-md flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
       <InfiniteMovingCards items={techStack} direction="left" speed="fast" />
     </div>
   );
@@ -62,7 +67,7 @@ const TabComponent = ({
 }) => (
   <>
     <div className="relative overflow-x-auto no-scrollbar px-4">
-      <div className="flex md:justify-center justify-start items-center mb-4 whitespace-nowrap">
+      <div className="flex md:justify-center justify-start items-center mb-4 whitespace-nowrap my-4">
         {tabs.map((tab) => (
           <motion.button
             key={tab.title}
@@ -95,7 +100,7 @@ const TabComponent = ({
           </motion.div>
         )}
         {activeTab === "Back-End" && (
-          <motion.p
+          <motion.div
             key="back-end"
             initial="initial"
             animate="animate"
@@ -107,10 +112,10 @@ const TabComponent = ({
               direction="left"
               speed="fast"
             />
-          </motion.p>
+          </motion.div>
         )}
         {activeTab === "AI/ML" && (
-          <motion.p
+          <motion.div
             key="ai-ml"
             initial="initial"
             animate="animate"
@@ -122,10 +127,10 @@ const TabComponent = ({
               direction="left"
               speed="fast"
             />
-          </motion.p>
+          </motion.div>
         )}
         {activeTab === "Embedded Systems" && (
-          <motion.p
+          <motion.div
             key="embedded-systems"
             initial="initial"
             animate="animate"
@@ -137,10 +142,10 @@ const TabComponent = ({
               direction="left"
               speed="fast"
             />
-          </motion.p>
+          </motion.div>
         )}
         {activeTab === "No Code Tools" && (
-          <motion.p
+          <motion.div
             key="no-code-tools"
             initial="initial"
             animate="animate"
@@ -152,7 +157,7 @@ const TabComponent = ({
               direction="left"
               speed="fast"
             />
-          </motion.p>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
@@ -166,10 +171,10 @@ const Content = () => {
     <main className="pb-8">
       <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full rounded-bl-xl rounded-br-xl">
         <motion.div
-          initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-8"
         >
           <h1 className="text-3xl font-bold mb-2 text-black-light">Services</h1>
@@ -186,7 +191,7 @@ const Content = () => {
               initial={{ opacity: 0, x: 10 + i * 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 + i * 0.1 }}
+              transition={{ duration: 0.5 + i * 0.1, type: "spring" }}
             >
               <BentoGridItem
                 title={item.title}
@@ -200,18 +205,18 @@ const Content = () => {
       </section>
 
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 100 }}
-        transition={{ duration: 1 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 1, delay: 0.2 }}
         className="bg-blue-light py-8 max-w-7xl mx-auto rounded-xl"
       >
         <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full">
           <motion.div
-            initial={{ opacity: 0, x: 10 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 1.1 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 1.1, delay: 0.3 }}
             className="mb-8"
           >
             <h1 className="text-3xl font-bold mb-2 text-white-light">
