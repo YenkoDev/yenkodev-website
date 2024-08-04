@@ -1,71 +1,30 @@
 import React from "react";
-import Head from "next/head";
-
-import {
-  NavBar,
-  Services,
-  Process,
-  Projects,
-  Testimonials,
-  Team,
-  Contact,
-  Footer,
-} from "../components";
 import Hero from "@/components/Hero";
+
+export const metadata = {
+  title: "YenkoDev",
+  description:
+    "YenkoDev offers cutting-edge software solutions tailored to meet the diverse needs of our clients. Specializing in web, mobile, desktop app development, AI/ML, and custom software solutions.",
+  metadataBase: new URL("https://www.yenkodev.com"),
+  openGraph: {
+    title: "Comprehensive Software Solutions - YenkoDev",
+    description:
+      "YenkoDev offers cutting-edge software solutions tailored to meet the diverse needs of our clients. Specializing in web, mobile, desktop app development, AI/ML, and custom software solutions.",
+    type: "website",
+    url: "https://www.yenkodev.com",
+    images: [
+      {
+        url: "/yenkoDevLogoNoBg.png",
+      },
+    ],
+  },
+};
 
 const Home = () => {
   return (
-    <>
-      <Head>
-        <title>YenkoDev - Comprehensive Software Solutions</title>
-        <meta
-          name="description"
-          content="YenkoDev offers cutting-edge software solutions tailored to meet the diverse needs of our clients. Specializing in mobile, desktop, web app development, AI/ML, cloud services, and more."
-        />
-        <meta
-          name="keywords"
-          content="YenkoDev, software development, mobile app, web app, AI, machine learning, cloud services, embedded development, IoT, UI/UX design"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
-      <header className="relative z-20">
-        <NavBar />
-      </header>
-
-      <main>
-        <section id="hero">
-          <Hero />
-        </section>
-
-        <div className="relative flex justify-center items-center flex-col overflow-hidden w-full">
-          <div className="max-w-7xl w-full">
-            <section id="services">
-              <Services />
-            </section>
-            <section id="process">
-              <Process />
-            </section>
-            <section id="projects">
-              <Projects />
-            </section>
-            <section id="testimonials">
-              <Testimonials />
-            </section>
-            <section id="team">
-              <Team />
-            </section>
-            <section id="contact">
-              <Contact />
-            </section>
-          </div>
-        </div>
-      </main>
-
-      <footer>
-        <Footer />
-      </footer>
-    </>
+    <main>
+      <Hero />
+    </main>
   );
 };
 
