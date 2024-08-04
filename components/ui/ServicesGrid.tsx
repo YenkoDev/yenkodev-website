@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Boxes } from "@/components/ui/BackgroundBoxes";
 
 export const BentoGrid = ({
   className,

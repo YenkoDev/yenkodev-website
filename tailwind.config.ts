@@ -31,7 +31,7 @@ const config = {
         "custom-gray": colors.gray[500],
       },
       height: {
-        "hero-height": "calc(100vh - 92.688px)",
+        "hero-height": "calc(100vh - 124.688px)",
       },
       fontFamily: {
         poppins: ["Poppins", "serif"],

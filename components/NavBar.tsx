@@ -143,7 +143,7 @@ const NavBar = () => {
           exit={{ height: 0, opacity: 0 }}
           transition={{ delay: 0, duration: 1, type: "spring" }}
         >
-          <div className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-white-light">
+          <div className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-white-light border">
             <button
               className="absolute top-12 right-6 text-custom-gray"
               onClick={toggleMenu}

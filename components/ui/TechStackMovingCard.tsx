@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-export const InfiniteMovingCards = ({
+export const TechStackMovingCard = ({
   items,
   direction = "left",
   speed = "fast",
