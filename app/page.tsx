@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "@/components/Hero";
+import Content from "./content";
 
 export const metadata = {
   title: "YenkoDev",
@@ -23,7 +23,7 @@ export const metadata = {
 const Home = () => {
   return (
     <main>
-      <Hero />
+      <Content />
     </main>
   );
 };

@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BentoGrid, BentoGridItem } from "../../components/ui/BentoGrid";
-import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
+import { BentoGrid, BentoGridItem } from "../../components/ui/ServicesGrid";
+import { TechStackMovingCard } from "@/components/ui/TechStackMovingCard";
 
 import { services } from "@/constants";
 import {
@@ -49,7 +49,7 @@ function TechstackGroup({
 }) {
   return (
     <div className="bg-blue-light rounded-md flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards items={techStack} direction="left" speed="fast" />
+      <TechStackMovingCard items={techStack} direction="left" speed="fast" />
     </div>
   );
 }
