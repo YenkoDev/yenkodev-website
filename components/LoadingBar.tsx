@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 const LoadingBar = ({ isLoading }: { isLoading: boolean }) => {
   const [progress, setProgress] = useState(0);
 
@@ -23,10 +24,5 @@ const LoadingBar = ({ isLoading }: { isLoading: boolean }) => {
     }
   }, [isLoading]);
 
-  return (
-    <div
-      className="fixed top-0 left-0 h-1 bg-blue-light transition-all"
-      style={{ width: `${progress}%`, opacity: isLoading ? 1 : 0 }}
-    ></div>
-  );
+  return <div className="fixed top-0 left-0 h-1 bg-blue-light transition-all" style={{ width: `${progress}%`, opacity: isLoading ? 1 : 0 }}></div>;
 };
