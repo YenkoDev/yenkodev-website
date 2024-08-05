@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "./provider";
+import {ContentfulProvider} from "@/context/ContenfulContext"
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import NavBar from "@/components/NavBar";
@@ -72,12 +73,16 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <NavigationProvider>
+                <ContentfulProvider>
                 <MainLayout>{children}</MainLayout>
+                </ContentfulProvider>
               </NavigationProvider>
             </ThemeProvider>
           ) : (
             <NavigationProvider>
+              <ContentfulProvider>
               <MainLayout>{children}</MainLayout>
+              </ContentfulProvider>
             </NavigationProvider>
           )}
         </div>

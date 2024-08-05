@@ -1,23 +1,27 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
+import Content from "./content";
 
-const Content = () => {
-  return (
-    <main className="section-layout">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="flex justify-center">
-          <h1 className="text-3xl font-bold w-full">Projects</h1>
-        </div>
-      </motion.div>
-    </main>
-  );
+export const metadata = {
+  title: "Projects - YenkoDev",
+  description:
+    "Explore the sample works and projects by YenkoDev, showcasing our expertise in web, mobile, desktop app development, AI/ML, and custom software solutions.",
+  metadataBase: new URL("https://www.yenkodev.com"),
+  openGraph: {
+    title: "Projects - YenkoDev",
+    description:
+      "Explore the sample works and projects by YenkoDev, showcasing our expertise in web, mobile, desktop app development, AI/ML, and custom software solutions.",
+    type: "website",
+    url: "https://www.yenkodev.com/projects",
+    images: [
+      {
+        url: "/yenkoDevLogoNoBg.png",
+      },
+    ],
+  },
 };
 
-export default Content;
+const Projects = () => {
+  return <Content />;
+};
+
+export default Projects;
