@@ -35,6 +35,8 @@ import shopifyLogo from "./images/shopify-original.png";
 import bubbleIOLogo from "./images/bubble-io-original.svg";
 import zapierLogo from "./images/zapier-original.svg";
 
+import placeholderImage from "./images/placeholderImage.png"
+
 export {
   yenkoDevWhiteLogo,
   yenkoYLogoNoBg,
@@ -65,4 +67,5 @@ export {
   shopifyLogo,
   bubbleIOLogo,
   zapierLogo,
+  placeholderImage
 };

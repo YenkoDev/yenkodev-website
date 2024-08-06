@@ -85,10 +85,10 @@ export const TechStackMovingCard = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item, index) => (
           <li
             className="relative px-8 py-6 flex flex-col items-center justify-center w-[130px] h-[130px] md:w-[150px] md:h-[170px] rounded-xl"
-            key={item.image}
+            key={index}
           >
             <Image
               src={item.image}

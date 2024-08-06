@@ -127,13 +127,18 @@ const NavBar = () => {
         </motion.div>
       </div>
 
-      <div className="lg:hidden">
+      <motion.div 
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: 100, opacity: 0 }}
+      transition={{ delay: 0.7, duration: 1, type: "spring" }}
+      className="lg:hidden">
         {!isOpen && (
           <button onClick={toggleMenu}>
             <FaBars size={24} className="text-black-light mr-2" />
           </button>
         )}
-      </div>
+      </motion.div>
 
       {/* Mobile menu */}
       {isOpen && (

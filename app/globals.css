@@ -21,6 +21,19 @@
   display: none;
 }
 
+/* masonry.css */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+
+
 body {
   @apply bg-white-light;
 }
