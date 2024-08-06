@@ -75,7 +75,7 @@ const TabComponent = ({
             initial="initial"
             animate={activeTab === tab.title ? "active" : "initial"}
             variants={tabButtonVariants}
-            className={`px-4 py-2 mr-2 rounded-lg text-sm font-bold relative z-10`}
+            className={`px-4 py-2 mr-4 rounded-lg text-sm font-bold relative z-10`}
           >
             {tab.title}
           </motion.button>
