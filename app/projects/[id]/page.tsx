@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useContext } from 'react';
-import { ContentfulContext } from '@/context/ContenfulContext';
+import { useContentfulContext } from '@/context/ContenfulContext';
 import { placeholderImage } from '@/assets';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -12,7 +12,8 @@ import { FaArrowLeft } from 'react-icons/fa'; // Importing an icon for the back 
 const ProjectDetails: React.FC = () => {
   const router = useRouter();
   const { id } = useParams();
-  const { projects } = useContext(ContentfulContext);
+  const { projects } = useContentfulContext();
+  
 
   const project = projects.find((project) => project.sys.id === id);
 
@@ -67,7 +68,7 @@ const ProjectDetails: React.FC = () => {
           >
             {project.fields.coverImage ? (
               <div className="mb-4 relative w-full h-full">
-                {project.fields.coverImage.map((image) => (
+                {project.fields.coverImage.map((image: any) => (
                   <Image
                     key={image.fields.file.url}
                     src={`https:${image.fields.file.url}`}

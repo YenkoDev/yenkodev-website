@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import client from '@/services/contentfulClient';
 
 interface ContentfulContextType {
@@ -47,4 +47,12 @@ export const ContentfulProvider: React.FC<ContentfulProviderProps> = ({ children
       {children}
     </ContentfulContext.Provider>
   );
+};
+
+export const useContentfulContext = () => {
+  const context = useContext(ContentfulContext);
+  if (!context) {
+    throw new Error("useContentfulContext must be used within a NavigationProvider");
+  }
+  return context;
 };

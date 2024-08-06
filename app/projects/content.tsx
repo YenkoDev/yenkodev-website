@@ -3,10 +3,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "@/components/ui/ProjectsGrid";
-import { ContentfulContext } from "@/context/ContenfulContext";
+import { ContentfulContext, useContentfulContext } from "@/context/ContenfulContext";
 
 const Content: React.FC = () => {
-  const { projects, categories } = useContext(ContentfulContext);
+  const { projects, categories } = useContentfulContext();
   const itemsPerPage = 6; // Adjust the number of items per page here
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -43,7 +43,7 @@ const Content: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
- 
+
   return (
     <main className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full mb-8">   
       <BentoGrid className="mx-auto mb-8">
