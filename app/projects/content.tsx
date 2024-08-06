@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useContext, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useContext, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { BentoGrid, BentoGridItem } from "@/components/ui/ProjectsGrid";
 import { ContentfulContext } from "@/context/ContenfulContext";
 
 const Content: React.FC = () => {
   const { projects, categories } = useContext(ContentfulContext);
-  const itemsPerPage = 3; // Adjust the number of items per page here
+  const itemsPerPage = 6; // Adjust the number of items per page here
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
-  console.log(categories);
-
-  // Calculate the total number of pages
-  const totalPages = Math.ceil(projects.length / itemsPerPage);
+  useEffect(() => {
+    setTotalPages(Math.ceil(projects.length / itemsPerPage));
+  }, [projects]);
 
   // Get the projects for the current page
   const paginatedProjects = projects.slice(
@@ -39,102 +40,81 @@ const Content: React.FC = () => {
     return pages;
   };
 
-  return (
-    <main className="section-layout p-4">
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
  
-   
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {paginatedProjects.map((project: any, index: number) => (
+  return (
+    <main className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full mb-8">   
+      <BentoGrid className="mx-auto mb-8">
+        <AnimatePresence key={currentPage}>
+          {paginatedProjects.map((item, i) => (
             <motion.div
-              key={project.sys.id}
-              className="project-item bg-white shadow-lg rounded-lg overflow-hidden"
-            
-      
-              initial={{ opacity: 0, y: 100 }}
+              key={item.sys.id}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y:100}}
-              transition={{ duration: 0.5 + index/10  }}
-            
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="p-4">
-                <h2 className="text-2xl font-bold mb-2">{project.fields.title}</h2>
-                <p className="text-gray-700 mb-4">{project.fields.shortText}</p>
-                {project.fields.coverImage && (
-                  <div className="mb-4">
-                    {project.fields.coverImage.map((image: any) => (
-                      <img
-                        key={image.sys.id}
-                        src={image.fields.file.url}
-                        alt={image.fields.title}
-                        className="w-full h-48 object-cover rounded"
-                      />
-                    ))}
-                  </div>
-                )}
-                {/* <div className="mb-4">
-                  <h3 className="font-bold">Clients</h3>
-                  <ul className="list-disc list-inside text-gray-700">
-                    {project.fields.clients?.map((client: string, index: number) => (
-                      <li key={index}>{client}</li>
-                    ))}
-                  </ul>
-                </div> */}
-                {/* <div className="mb-4">
-                  <h3 className="font-bold">Category</h3>
-                  <p className="text-gray-700">{project.fields.category}</p>
-                </div>
-                <div className="mb-4">
-                  <h3 className="font-bold">Objectives / Goals / Purpose</h3>
-                  <p className="text-gray-700">{project.fields.objectivesGoalsPurpose}</p>
-                </div>
-                <div className="mb-4">
-                  <h3 className="font-bold">Technologies Used</h3>
-                  <ul className="list-disc list-inside text-gray-700">
-                    {project.fields.technologiesUsed?.map((tech: string, index: number) => (
-                      <li key={index}>{tech}</li>
-                    ))}
-                  </ul>
-                </div> */}
-                <div className="mb-4">
-                  {/* <h3 className="font-bold">Description</h3> */}
-                  <p className="text-gray-700">{project.fields.description}</p>
-                </div>
-              </div>
-            </motion.div >
-          
+              <BentoGridItem
+                id={item.sys.id}
+                title={item.fields.title}
+                coverImage={item.fields.coverImage}
+                description={item.fields.description}
+                clients={item.fields.clients}
+                category={item.fields.category}
+                objectivesGoalsPurpose={item.fields.objectivesGoalsPurpose}
+                technologiesUsed={item.fields.technologiesUsed}
+              />
+            </motion.div>
           ))}
-        </div>
-
+        </AnimatePresence>
+      </BentoGrid>
+  
+      {totalPages > 1 && (
         <div className="flex justify-center mt-8">
-          <nav className="inline-flex">
-            <button
-              className="px-3 py-1 mx-1 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
+          <nav className="flex gap-2">
+            {currentPage > 1 && (
+              <button
+                className="px-3 py-1 bg-blue-light rounded-md hover:bg-blue-dark text-white-light text-sm"
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                  scrollToTop();
+                }}
+              >
+                Prev
+              </button>
+            )}
             {getPageNumbers().map((page, index) => (
               <button
                 key={index}
-                className={`px-3 py-1 mx-1 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  currentPage === page ? "bg-blue-500 text-white" : ""
+                className={`px-2 py-1 bg-white-light rounded-md hover:bg-blue-dark hover:text-white-light text-sm ${
+                  currentPage === page ? "border-2 border-blue-light" : ""
                 }`}
-                onClick={() => page !== "..." && setCurrentPage(page as number)}
+                onClick={() => {
+                  if (page !== "...") {
+                    setCurrentPage(page as number);
+                    scrollToTop();
+                  }
+                }}
               >
                 {page}
               </button>
             ))}
-            <button
-              className="px-3 py-1 mx-1 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
+            {currentPage < totalPages && (
+              <button
+                className="px-3 py-1 bg-blue-light rounded-md hover:bg-blue-dark text-white-light text-sm"
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                  scrollToTop();
+                }}
+              >
+                Next
+              </button>
+            )}
           </nav>
         </div>
-   
+      )}
     </main>
   );
 };
