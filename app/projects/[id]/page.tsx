@@ -127,19 +127,23 @@ const ProjectDetails: React.FC = () => {
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              transition={{ duration: 0.5, delay: 1 }} 
+              transition={{ duration: 0.5, delay: 0.8 }} 
               className="mt-4"
             >
-              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Clients</h3>
-              <div className="flex flex-wrap">
-                {clients}
-              </div>
+              {clients.length > 0 &&
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Clients</h3>
+                  <div className="flex flex-wrap">
+                    {clients}
+                  </div>
+                </div>
+              }
             </motion.div>
 
             <motion.p 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              transition={{ duration: 0.5, delay: 0.8 }} 
+              transition={{ duration: 0.5, delay: 1 }} 
               className="text-sm text-custom-gray dark:text-gray-300 mb-4"
             >
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Purpose</h3>
@@ -149,7 +153,7 @@ const ProjectDetails: React.FC = () => {
             <motion.p 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              transition={{ duration: 0.5, delay: 0.8 }} 
+              transition={{ duration: 0.5, delay: 1.2 }} 
               className="text-sm text-custom-gray dark:text-gray-300 mb-4"
             >
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Description</h3>
@@ -159,7 +163,7 @@ const ProjectDetails: React.FC = () => {
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
-              transition={{ duration: 0.5, delay: 1 }} 
+              transition={{ duration: 0.5, delay: 1.4 }} 
               className="mt-4"
             >
               <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Technologies Used</h3>
