@@ -171,28 +171,28 @@ const items = [
     description:
       "YenkoDev was founded by a group of freelance students passionate about software development. What began as a series of freelance projects has grown into a dynamic software development company. Initially serving local clients, we have expanded our reach to include international clients, providing cutting-edge solutions across the globe.",
     header: <Skeleton />,
-    className: "md:col-span-2",
+    className: "md:col-span-3",
   },
   {
     title: "We Are Diverse",
     description:
-      "At YenkoDev, we pride ourselves on our versatility and ability to excel in multiple areas of technology. Our diverse expertise allows us to deliver comprehensive solutions that cater to a wide range of industries and technological needs.",
+      "YenkoDev pride ourselves on our versatility and ability to excel in multiple areas of technology. Our diverse expertise allows us to deliver comprehensive solutions that cater to a wide range of industries and technological needs.",
     header: <Skeleton />,
-    className: "md:col-span-1",
+    className: "md:col-span-2",
   },
   {
     title: "Our Vision",
     description:
-      "Our vision is to be a global leader in software development, recognized for our commitment to excellence, innovation, and the ability to deliver exceptional results. We aim to empower businesses by transforming ideas into cutting-edge software solutions that drive growth and efficiency.",
+      "YenkoDev vision to be a global leader in software development, recognized for our commitment to excellence, innovation, and the ability to deliver exceptional results. We aim to empower businesses by transforming ideas into cutting-edge software solutions that drive growth and efficiency.",
     header: <Skeleton />,
-    className: "md:col-span-1",
+    className: "md:col-span-2",
   },
   {
     title: "End-to-End Support",
     description:
-      "At YenkoDev, we provide comprehensive support throughout the entire lifecycle of your project. From initial consultation and planning to development, deployment, and ongoing maintenance, our dedicated team ensures that your software solutions continue to meet your evolving needs and drive your business success.",
+      "YenkoDev provide comprehensive support throughout the entire lifecycle of your project. From initial consultation and planning to development, deployment, and ongoing maintenance, our dedicated team ensures that your software solutions continue to meet your evolving needs and drive your business success.",
     header: <Skeleton />,
-    className: "md:col-span-2",
+    className: "md:col-span-3",
   },
 ];
 
