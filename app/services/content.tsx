@@ -5,7 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "../../components/ui/ServicesGrid";
 import { TechStackMovingCard } from "@/components/ui/TechStackMovingCard";
 
-import { services } from "@/constants";
+
+// import { services } from "@/constants";
+import { useContentfulContext } from '@/context/ContenfulContext';
+import Image from 'next/image';
+import { placeholderImage } from '@/assets';
+
 import {
   frontEndStack,
   backendStack,
@@ -166,7 +171,7 @@ const TabComponent = ({
 
 const Content = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].title);
-
+  const { services } = useContentfulContext();
   return (
     <main className="pb-8">
       <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full rounded-bl-xl rounded-br-xl">
@@ -194,10 +199,34 @@ const Content = () => {
               transition={{ duration: 0.5 + i * 0.1, type: "spring" }}
             >
               <BentoGridItem
-                title={item.title}
-                description={item.description}
-                header={item.header}
-                icon={item.icon}
+                title={item.fields.serviceTitle}
+                description={item.fields.description}
+                header={item.fields.coverImage ? (
+                  <div className="relative w-full min-h-24">
+                    {item.fields.coverImage.map((image: any) => (
+                      <Image
+                        key={image.fields.file.url}
+                        src={`https:${image.fields.file.url}`}
+                        alt={image.fields.title}
+                        fill
+                        style={{ objectFit: 'contain' }}
+                        className="rounded-lg"
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="relative w-full min-h-24">
+                    <Image
+                      src={placeholderImage}
+                      alt="placeholder image"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      className="rounded-lg"
+                      priority
+                    />
+                  </div>
+                )}
+                // icon={item.icon}
               />
             </motion.div>
           ))}
