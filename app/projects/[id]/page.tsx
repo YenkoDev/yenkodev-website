@@ -32,6 +32,18 @@ const ProjectDetails: React.FC = () => {
     );
   }
 
+  const clients = (project.fields.clients || []).map((tech: string, index: number) => (
+    <motion.span 
+      key={index} 
+      className="bg-orange-light text-white rounded-full text-xs px-3 py-1 mr-2 mb-2 inline-block"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
+    >
+      {tech}
+    </motion.span>
+  ));
+
   const techBadges = (project.fields.technologiesUsed || []).map((tech: string, index: number) => (
     <motion.span 
       key={index} 
@@ -111,6 +123,28 @@ const ProjectDetails: React.FC = () => {
             >
               {project.fields.category}
             </motion.h2>
+
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 0.5, delay: 1 }} 
+              className="mt-4"
+            >
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Clients</h3>
+              <div className="flex flex-wrap">
+                {clients}
+              </div>
+            </motion.div>
+
+            <motion.p 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 0.5, delay: 0.8 }} 
+              className="text-sm text-custom-gray dark:text-gray-300 mb-4"
+            >
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Purpose</h3>
+              {project.fields.objectivesGoalsPurpose}
+            </motion.p>
             
             <motion.p 
               initial={{ opacity: 0 }} 
@@ -118,6 +152,7 @@ const ProjectDetails: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.8 }} 
               className="text-sm text-custom-gray dark:text-gray-300 mb-4"
             >
+              <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Description</h3>
               {project.fields.description}
             </motion.p>
 
