@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { placeholderImage } from "@/assets";
+import Link from 'next/link';
 
 const truncateText = (text: string, maxLength: number) => {
   if (text.length <= maxLength) {
@@ -99,9 +100,10 @@ export const BentoGridItem = ({
           {description.length > maxLength && (
             <span
               className="text-blue-500 cursor-pointer ml-2 underline"
-              onClick={() => router.push(`/projects/${id}`)}
             >
-              Learn More
+              <Link href={`/projects/${id}`}>
+                Learn More
+              </Link>
             </span>
           )}
         </div>
