@@ -103,7 +103,7 @@ function MainLayout({
   return (
     <>
       <LoadingBar isLoading={isLoading} />
-      <header className="relative z-20">
+      <header className="relative z-30">
         <NavBar />
       </header>
       <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
