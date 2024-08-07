@@ -113,7 +113,7 @@ function MainLayout({
         </AnimatePresence>
       </div>
 
-      <footer className="relative z-30">
+      <footer className="relative z-20">
         <Footer />
       </footer>
     </div>
