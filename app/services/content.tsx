@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "../../components/ui/ServicesGrid";
 import { TechStackMovingCard } from "@/components/ui/TechStackMovingCard";
 
-
 // import { services } from "@/constants";
-import { useContentfulContext } from '@/context/ContenfulContext';
-import Image from 'next/image';
-import { placeholderImage } from '@/assets';
+import { useContentfulContext } from "@/context/ContenfulContext";
+import Image from "next/image";
+import { placeholderImage } from "@/assets";
 
 import {
   frontEndStack,
@@ -201,31 +200,33 @@ const Content = () => {
               <BentoGridItem
                 title={item.fields.serviceTitle}
                 description={item.fields.description}
-                header={item.fields.coverImage ? (
-                  <div className="relative w-full min-h-24">
-                    {item.fields.coverImage.map((image: any) => (
+                header={
+                  item.fields.coverImage ? (
+                    <div className="relative w-full min-h-24">
+                      {item.fields.coverImage.map((image: any) => (
+                        <Image
+                          key={image.fields.file.url}
+                          src={`https:${image.fields.file.url}`}
+                          alt={image.fields.title}
+                          fill
+                          style={{ objectFit: "contain" }}
+                          className="rounded-lg"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="relative w-full min-h-24">
                       <Image
-                        key={image.fields.file.url}
-                        src={`https:${image.fields.file.url}`}
-                        alt={image.fields.title}
+                        src={placeholderImage}
+                        alt="placeholder image"
                         fill
-                        style={{ objectFit: 'contain' }}
+                        style={{ objectFit: "contain" }}
                         className="rounded-lg"
+                        priority
                       />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="relative w-full min-h-24">
-                    <Image
-                      src={placeholderImage}
-                      alt="placeholder image"
-                      fill
-                      style={{ objectFit: "contain" }}
-                      className="rounded-lg"
-                      priority
-                    />
-                  </div>
-                )}
+                    </div>
+                  )
+                }
                 // icon={item.icon}
               />
             </motion.div>

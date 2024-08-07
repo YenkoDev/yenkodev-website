@@ -3,7 +3,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "@/components/ui/ProjectsGrid";
-import { ContentfulContext, useContentfulContext } from "@/context/ContenfulContext";
+import {
+  ContentfulContext,
+  useContentfulContext,
+} from "@/context/ContenfulContext";
 
 const Content: React.FC = () => {
   const { projects, categories } = useContentfulContext();
@@ -31,9 +34,24 @@ const Content: React.FC = () => {
       if (currentPage <= 3) {
         pages = [1, 2, 3, 4, "...", totalPages];
       } else if (currentPage >= totalPages - 2) {
-        pages = [1, "...", totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+        pages = [
+          1,
+          "...",
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+          totalPages,
+        ];
       } else {
-        pages = [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+        pages = [
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages,
+        ];
       }
     }
 
@@ -41,11 +59,11 @@ const Content: React.FC = () => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <main className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full mb-8">   
+    <main className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full mb-8">
       <BentoGrid className="mx-auto mb-8">
         <AnimatePresence key={currentPage}>
           {paginatedProjects.map((item, i) => (
@@ -70,7 +88,7 @@ const Content: React.FC = () => {
           ))}
         </AnimatePresence>
       </BentoGrid>
-  
+
       {totalPages > 1 && (
         <div className="flex justify-center mt-8">
           <nav className="flex gap-2">

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { placeholderImage } from "@/assets";
-import Link from 'next/link';
+import Link from "next/link";
 
 const truncateText = (text: string, maxLength: number) => {
   if (text.length <= maxLength) {
@@ -40,7 +40,6 @@ export const BentoGridItem = ({
   category,
   objectivesGoalsPurpose,
   technologiesUsed,
-
 }: {
   className?: string;
   id: string;
@@ -51,7 +50,6 @@ export const BentoGridItem = ({
   category: string;
   objectivesGoalsPurpose: string;
   technologiesUsed: string | Array<string>;
- 
 }) => {
   const router = useRouter();
   const maxLength = 200; // Adjust this number to your desired character limit
@@ -78,7 +76,7 @@ export const BentoGridItem = ({
                 src={`https:${image.fields.file.url}`}
                 alt={image.fields.title}
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
                 className="rounded-lg"
               />
             ))}
@@ -88,8 +86,8 @@ export const BentoGridItem = ({
             <Image
               src={placeholderImage}
               alt="placeholder image"
-            fill
-            style={{ objectFit: "contain" }}
+              fill
+              style={{ objectFit: "contain" }}
               className="rounded-lg"
               priority
             />
@@ -98,12 +96,8 @@ export const BentoGridItem = ({
         <div className="text-custom-gray text-sm dark:text-neutral-300">
           {truncateText(description, maxLength)}
           {description.length > maxLength && (
-            <span
-              className="text-blue-500 cursor-pointer ml-2 underline"
-            >
-              <Link href={`/projects/${id}`}>
-                Learn More
-              </Link>
+            <span className="text-blue-500 cursor-pointer ml-2 underline">
+              <Link href={`/projects/${id}`}>Learn More</Link>
             </span>
           )}
         </div>

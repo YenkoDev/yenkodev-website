@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useNavigation } from "@/context/NavigationContext";
 
 import { HoverBorderGradient } from "../components/ui/HoverBorderGradient";
@@ -10,6 +9,8 @@ import { TypewriterEffectSmooth } from "../components/ui/TypewriterEffect";
 import { BentoGrid, BentoGridItem } from "@/components/ui/HomeGrid";
 
 import { motion } from "framer-motion";
+
+import { aboutList } from "@/constants";
 
 import { yenkoYLogoNoBg, heroCover } from "@/assets";
 
@@ -32,7 +33,8 @@ const Content = () => {
     <main>
       <Hero />
       <About />
-      {/* <Testimonials /> */}
+      {/* <FeaturedProjects /> */}
+      {/* <FeaturedTestimonials /> */}
     </main>
   );
 };
@@ -133,10 +135,10 @@ const Hero = () => {
 
 const About = () => {
   return (
-    <div id="about" className="flex items-center justify-center h-screen">
-      <div className="h-screen w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
+    <div id="about" className="relative flex items-center justify-center mb-8">
+      <div className="min-h-screen  border-red-500 w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-        <div className="z-20 py-20">
+        <div className="z-20">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -145,13 +147,13 @@ const About = () => {
           >
             <div className="section-layout">
               <BentoGrid className="mx-auto">
-                {items.map((item, i) => (
+                {aboutList.map((about, i) => (
                   <BentoGridItem
                     key={i}
-                    title={item.title}
-                    header={item.header}
-                    description={item.description}
-                    className={item.className}
+                    title={about.title}
+                    header={about.header}
+                    description={about.description}
+                    className={about.className}
                   />
                 ))}
               </BentoGrid>
@@ -163,40 +165,11 @@ const About = () => {
   );
 };
 
-const Skeleton = () => <div className=""></div>;
+const FeaturedProjects = () => {
+  return <div id="testimonials" className="h-screen"></div>;
+};
 
-const items = [
-  {
-    title: "How It Started",
-    description:
-      "YenkoDev was founded by a group of freelance students passionate about software development. What began as a series of freelance projects has grown into a dynamic software development company. Initially serving local clients, we have expanded our reach to include international clients, providing cutting-edge solutions across the globe.",
-    header: <Skeleton />,
-    className: "md:col-span-3",
-  },
-  {
-    title: "We Are Diverse",
-    description:
-      "YenkoDev pride ourselves on our versatility and ability to excel in multiple areas of technology. Our diverse expertise allows us to deliver comprehensive solutions that cater to a wide range of industries and technological needs.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-  },
-  {
-    title: "Our Vision",
-    description:
-      "YenkoDev vision to be a global leader in software development, recognized for our commitment to excellence, innovation, and the ability to deliver exceptional results. We aim to empower businesses by transforming ideas into cutting-edge software solutions that drive growth and efficiency.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-  },
-  {
-    title: "End-to-End Support",
-    description:
-      "YenkoDev provide comprehensive support throughout the entire lifecycle of your project. From initial consultation and planning to development, deployment, and ongoing maintenance, our dedicated team ensures that your software solutions continue to meet your evolving needs and drive your business success.",
-    header: <Skeleton />,
-    className: "md:col-span-3",
-  },
-];
-
-const Testimonials = () => {
+const FeaturedTestimonials = () => {
   return <div id="testimonials" className="h-screen"></div>;
 };
 

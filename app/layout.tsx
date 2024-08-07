@@ -4,10 +4,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "./provider";
-import {ContentfulProvider} from "@/context/ContenfulContext"
+import { ContentfulProvider } from "@/context/ContenfulContext";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import { AnimatePresence } from "framer-motion";
 import { NavigationProvider, useNavigation } from "@/context/NavigationContext";
 
@@ -74,14 +75,14 @@ export default function RootLayout({
             >
               <NavigationProvider>
                 <ContentfulProvider>
-                <MainLayout>{children}</MainLayout>
+                  <MainLayout>{children}</MainLayout>
                 </ContentfulProvider>
               </NavigationProvider>
             </ThemeProvider>
           ) : (
             <NavigationProvider>
               <ContentfulProvider>
-              <MainLayout>{children}</MainLayout>
+                <MainLayout>{children}</MainLayout>
               </ContentfulProvider>
             </NavigationProvider>
           )}
@@ -101,14 +102,20 @@ function MainLayout({
   const { isLoading, handleExitComplete } = useNavigation();
 
   return (
-    <>
-      <LoadingBar isLoading={isLoading} />
-      <header className="relative z-30">
-        <NavBar />
-      </header>
-      <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
-        {!isLoading && <div key={pathname}>{children}</div>}
-      </AnimatePresence>
-    </>
+    <div className="flex flex-col">
+      <div className="min-h-screen">
+        <LoadingBar isLoading={isLoading} />
+        <header className="relative z-30">
+          <NavBar />
+        </header>
+        <AnimatePresence mode="wait" onExitComplete={handleExitComplete}>
+          {!isLoading && <div key={pathname}>{children}</div>}
+        </AnimatePresence>
+      </div>
+
+      <footer className="relative z-30">
+        <Footer />
+      </footer>
+    </div>
   );
 }
