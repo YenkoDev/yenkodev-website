@@ -23,7 +23,7 @@ const ProjectDetails: React.FC = () => {
         <p className="text-lg text-red-500">Project not found</p>
         <button
           onClick={() => router.back()}
-          className="mt-4 px-4 py-2 bg-blue-light text-white rounded-full shadow-lg hover:bg-blue-dark transition duration-200 flex items-center"
+          className="mt-4 px-4 py-2 bg-blue-light text-white rounded-full shadow-md hover:bg-blue-dark transition duration-200 flex items-center"
         >
           <FaArrowLeft className="mr-2" />
           Back
@@ -60,7 +60,7 @@ const ProjectDetails: React.FC = () => {
     <div className="section-layout mx-auto p-4 sm:p-6">
       <button
         onClick={() => router.back()}
-        className="mb-6 px-4 py-2 bg-blue-light text-white rounded-full shadow-lg hover:bg-blue-dark transition duration-200 flex items-center"
+        className="mb-6 px-4 py-2 bg-blue-light text-white rounded-full shadow-md hover:bg-blue-dark transition duration-200 flex items-center"
       >
         <FaArrowLeft className="mr-2" />
         Back
@@ -69,7 +69,7 @@ const ProjectDetails: React.FC = () => {
         initial={{ opacity: 0, y: 50 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.5 }} 
-        className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg space-y-6"
+        className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md space-y-6"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <motion.div 
