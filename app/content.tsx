@@ -48,7 +48,7 @@ const Hero = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -1000, opacity: 0 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute md:inset-0 bottom-5 z-0 overflow-hidden"
+        className="absolute md:inset-0 bottom-5 z-[-1] overflow-hidden"
       >
         <Image
           src={heroCover}
