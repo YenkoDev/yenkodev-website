@@ -32,7 +32,7 @@ const Content = () => {
     <main>
       <Hero />
       <About />
-      <Testimonials />
+      {/* <Testimonials /> */}
     </main>
   );
 };
@@ -42,8 +42,8 @@ const Hero = () => {
   const words = "Comprehensive Software Solutions";
 
   return (
-    <section className="section-layout mb-8">
-      {/* <motion.div
+    <section className="section-layout h-hero-height">
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -1000, opacity: 0 }}
@@ -58,7 +58,7 @@ const Hero = () => {
           className="opacity-[5%]"
           priority
         />
-      </motion.div> */}
+      </motion.div>
 
       <div className="z-20 max-w-5xl m-auto lg:mt-32 md:24 sm:mt-16 mt-8">
         <motion.div
@@ -133,8 +133,8 @@ const Hero = () => {
 
 const About = () => {
   return (
-    <div id="about" className="mb-8">
-      <div className="w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
+    <div id="about" className="flex items-center justify-center h-screen">
+      <div className="h-screen w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="z-20 py-20">
           <motion.div
@@ -197,7 +197,7 @@ const items = [
 ];
 
 const Testimonials = () => {
-  return <div id="testimonials" className="mb-8"></div>;
+  return <div id="testimonials" className="h-screen"></div>;
 };
 
 export default Content;
