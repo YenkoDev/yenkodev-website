@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Content from "./content";
 
 export const metadata = {
@@ -21,7 +21,11 @@ export const metadata = {
 };
 
 const Projects = () => {
-  return <Content />;
+  return (
+    <Suspense>
+      <Content />;
+    </Suspense>
+  );
 };
 
 export default Projects;
