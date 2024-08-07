@@ -7,11 +7,16 @@ import {
   ContentfulContext,
   useContentfulContext,
 } from "@/context/ContenfulContext";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 const Content: React.FC = () => {
   const { projects, categories } = useContentfulContext();
   const itemsPerPage = 6; // Adjust the number of items per page here
-  const [currentPage, setCurrentPage] = useState(1);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const page = searchParams.get("page");
+  const currentPage = page ? parseInt(page, 10) : 1;
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
@@ -62,6 +67,13 @@ const Content: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handlePageChange = (page: number) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", page.toString());
+    router.push(`${pathname}?${newParams.toString()}`);
+    scrollToTop();
+  };
+
   return (
     <main className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full mb-8">
       <BentoGrid className="mx-auto mb-8">
@@ -95,10 +107,7 @@ const Content: React.FC = () => {
             {currentPage > 1 && (
               <button
                 className="px-3 py-1 bg-blue-light rounded-md hover:bg-blue-dark text-white-light text-sm"
-                onClick={() => {
-                  setCurrentPage(currentPage - 1);
-                  scrollToTop();
-                }}
+                onClick={() => handlePageChange(currentPage - 1)}
               >
                 Prev
               </button>
@@ -111,8 +120,7 @@ const Content: React.FC = () => {
                 }`}
                 onClick={() => {
                   if (page !== "...") {
-                    setCurrentPage(page as number);
-                    scrollToTop();
+                    handlePageChange(page as number);
                   }
                 }}
               >
@@ -122,10 +130,7 @@ const Content: React.FC = () => {
             {currentPage < totalPages && (
               <button
                 className="px-3 py-1 bg-blue-light rounded-md hover:bg-blue-dark text-white-light text-sm"
-                onClick={() => {
-                  setCurrentPage(currentPage + 1);
-                  scrollToTop();
-                }}
+                onClick={() => handlePageChange(currentPage + 1)}
               >
                 Next
               </button>
