@@ -7,7 +7,7 @@ import Image from "next/image";
 const Content = () => {
   return (
     <main className="mb-4">
-      <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full ">
+      <section className="section-layout mx-auto justify-center items-center flex-col overflow-hidden w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ const Content = () => {
 
 function ProcessGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
       {ourProcess.map((item, index) => (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,15 +41,15 @@ function ProcessGrid() {
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5, delay: index * 0.2 }}
           key={`content-${index}`}
-          className="bg-white p-6 rounded-lg shadow-xl"
+          className="bg-white p-6 rounded-lg shadow-md"
         >
           <h2 className="bg-black-light font-bold text-white rounded-full text-sm w-fit px-4 py-1 mb-4 flex items-center">
             {item.icon} Step {index + 1}
           </h2>
 
-          <p className="font-bold text-black-light text-lg mb-2">
+          <h3 className="font-bold text-black-light text-lg mb-2">
             {item.title}
-          </p>
+          </h3>
 
           <div className="text-sm prose prose-sm dark:prose-invert text-custom-gray mb-4">
             <p>{item.description}</p>
