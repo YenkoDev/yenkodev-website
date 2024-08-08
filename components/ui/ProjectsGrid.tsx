@@ -57,17 +57,19 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "row-span-1 rounded-xl group/bento transition duration-200 p-4 dark:bg-black-light dark:border-white/[0.2] shadow-md justify-start flex flex-col space-y-4 min-h-[450px]",
+        "row-span-1 rounded-xl group/bento transition duration-200 p-4 dark:bg-black-light dark:border-white/[0.2] shadow-md justify-start flex flex-col space-y-4 min-h-[500px]",
         className
       )}
     >
-      <div className="group-hover/bento:translate-x-2 transition duration-200">
+      <div className="group-hover/bento:-translate-y-2 transition duration-200">
         <h3 className="font-bold text-sm dark:text-neutral-200 mb-4 mt-2">
           {title}
         </h3>
         <h2 className="bg-black-light font-bold text-white rounded-full text-sm w-fit px-4 py-1 mb-4 flex items-center">
           {category}
         </h2>
+      </div>
+      <div className="group-hover/bento:scale-125 transition duration-200">
         {coverImage ? (
           <div className="mb-4 relative w-full min-h-56">
             {coverImage.map((image) => (
@@ -93,6 +95,8 @@ export const BentoGridItem = ({
             />
           </div>
         )}
+      </div>
+      <div className="group-hover/bento:translate-y-2 transition duration-200">
         <div className="text-custom-gray text-sm dark:text-neutral-300">
           {truncateText(description, maxLength)}
           {description.length > maxLength && (
