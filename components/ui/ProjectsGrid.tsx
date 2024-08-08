@@ -99,11 +99,9 @@ export const BentoGridItem = ({
       <div className="group-hover/bento:translate-y-2 transition duration-200">
         <div className="text-custom-gray text-sm dark:text-neutral-300">
           {truncateText(description, maxLength)}
-          {description.length > maxLength && (
-            <span className="text-blue-500 cursor-pointer ml-2 underline">
+          <span className="text-blue-500 cursor-pointer ml-2 underline">
               <Link href={`/projects/${id}`}>Learn More</Link>
-            </span>
-          )}
+          </span>
         </div>
       </div>
     </div>
