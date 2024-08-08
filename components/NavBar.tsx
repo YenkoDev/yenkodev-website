@@ -143,59 +143,52 @@ const NavBar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 100, opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ delay: 0, duration: 1, type: "spring" }}
-        >
-          <div className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-white-light border">
-            <button
-              className="absolute top-12 right-6 text-custom-gray"
-              onClick={toggleMenu}
-            >
-              <FaTimes size={24} />
-            </button>
-            <ul className="flex flex-col items-center gap-8 text-custom-gray text-2xl tracking-tight">
-              {navLinks.map((navLink, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ y: -100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 100, opacity: 0 }}
-                  transition={{
-                    delay: (index + 1) / 10 + 0.1,
-                    duration: 1,
-                    type: "spring",
-                  }}
-                  className="cursor-pointer list-none font-semimedium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <Link
-                    href={navLink.href}
-                    onClick={(e) => handleLinkClick(e, navLink.href)}
-                  >
-                    {navLink.title}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-
-            <div className="mt-16" onClick={toggleMenu}>
-              <motion.div
+        <div className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-white-light border">
+          <button
+            className="absolute top-12 right-6 text-custom-gray"
+            onClick={toggleMenu}
+          >
+            <FaTimes size={24} />
+          </button>
+          <ul className="flex flex-col items-center gap-8 text-custom-gray text-2xl tracking-tight">
+            {navLinks.map((navLink, index) => (
+              <motion.li
+                key={index}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 100, opacity: 0 }}
-                transition={{ delay: 0.7, duration: 1, type: "spring" }}
+                transition={{
+                  delay: (index + 1) / 10 + 0.1,
+                  duration: 1,
+                  type: "spring",
+                }}
+                className="cursor-pointer list-none font-semimedium"
+                onClick={() => setIsOpen(false)}
               >
-                <WorkWithUsButton
-                  handleLinkClick={handleLinkClick}
-                  additionalClassName="text-xl"
-                />
-              </motion.div>
-            </div>
+                <Link
+                  href={navLink.href}
+                  onClick={(e) => handleLinkClick(e, navLink.href)}
+                >
+                  {navLink.title}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+
+          <div className="mt-16" onClick={toggleMenu}>
+            <motion.div
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{ delay: 0.7, duration: 1, type: "spring" }}
+            >
+              <WorkWithUsButton
+                handleLinkClick={handleLinkClick}
+                additionalClassName="text-xl"
+              />
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       )}
     </nav>
   );
