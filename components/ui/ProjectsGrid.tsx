@@ -70,31 +70,33 @@ export const BentoGridItem = ({
         </h2>
       </div>
       <div className="group-hover/bento:scale-125 transition duration-200">
-        {coverImage ? (
-          <div className="mb-4 relative w-full min-h-56">
-            {coverImage.map((image) => (
+        <Link href={`/projects/${id}`}>
+          {coverImage ? (
+            <div className="mb-4 relative w-full min-h-56">
+              {coverImage.map((image) => (
+                <Image
+                  key={image.fields.file.url}
+                  src={`https:${image.fields.file.url}`}
+                  alt={image.fields.title}
+                  fill
+                  style={{ objectFit: "contain" }}
+                  className="rounded-lg"
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="mb-4 relative w-full min-h-56">
               <Image
-                key={image.fields.file.url}
-                src={`https:${image.fields.file.url}`}
-                alt={image.fields.title}
+                src={placeholderImage}
+                alt="placeholder image"
                 fill
                 style={{ objectFit: "contain" }}
                 className="rounded-lg"
+                priority
               />
-            ))}
-          </div>
-        ) : (
-          <div className="mb-4 relative w-full min-h-56">
-            <Image
-              src={placeholderImage}
-              alt="placeholder image"
-              fill
-              style={{ objectFit: "contain" }}
-              className="rounded-lg"
-              priority
-            />
-          </div>
-        )}
+            </div>
+          )}
+        </Link>
       </div>
       <div className="group-hover/bento:translate-y-2 transition duration-200">
         <div className="text-custom-gray text-sm dark:text-neutral-300">
