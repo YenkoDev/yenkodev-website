@@ -52,7 +52,9 @@ const Footer = () => {
 
             <div className="flex flex-col items-start flex-1">
               <h3 className="text-xl font-bold mb-2">Contact Us</h3>
-              <p className="text-white-dark text-sm">info@yenkodev.com</p>
+              <a href="mailto:info@yenkodev.com">
+                <p className="text-white-dark text-sm">info@yenkodev.com</p>
+              </a>
             </div>
 
             <div className="flex flex-col items-start flex-1">
